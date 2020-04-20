@@ -1,0 +1,68 @@
+<div class="row">
+  <div class="col-12">
+    <div class="page-title-box">
+      <div class="page-title-right">
+        <ol class="breadcrumb m-0">
+          <li class="breadcrumb-item"><a routerLink="/admin/i/dashboard">Home</a></li>
+          <li class="breadcrumb-item active">Job Details</li>
+        </ol>
+      </div>
+      <h4 class="page-title">Job Details</h4>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-8">
+    <div class="card-box" style="height:100%;">
+      <h5>Title</h5>
+      <p>{{jobdetail?.Title}}</p>
+      <br>
+      <h5>Position</h5>
+      <p>{{jobdetail?.Position}}</p>
+      <br>
+      <h5>Job Type</h5>
+      <p>{{jobdetail?.JobType}}</p>
+      <br>
+      <h5>Salary</h5>
+      <p>{{jobdetail?.Salary}}/Hr</p>
+      <br>
+      <h5>Description</h5>
+      <p>{{jobdetail?.Description}}</p>
+
+      <a [routerLink]="['/admin/i/add-job/'+jobdetail?.Id]" class="btn btn-primary">Edit</a>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card-box" style="height:100%;">
+      <h5 *ngIf="jobdetail.AppliedWorkers.length > 0">Applied Workers</h5>
+      <div class="workers-list-sm" *ngIf="jobdetail.AppliedWorkers.length > 0">
+        <div class="item" *ngFor="let app of jobdetail.AppliedWorkers; let i = index">
+          <div class="thumb">
+            <img src="https://i.pravatar.cc/50?u=johnny" width="80" />
+          </div>
+          <div class="info">
+            <h5 class="mb-1 mt-0">{{app.UserName}}</h5>
+            <small>Waiter @1200/Hr</small>
+            <div class="mt-1" *ngIf="app.Status != 'Declined'">
+              <button type="button" class="btn btn-danger btn-sm mr-1" (click)="declineWorker(app)" title="Decline"><i
+                  class="mdi mdi-cancel"></i> Decline</button>
+              <button type="button" class="btn btn-success btn-sm" title="Accept"
+                (click)="acceptWorker(app, jobdetail.Id, app.Id)"><i class="mdi mdi-check-bold"></i> Accept</button>
+            </div>
+            <div class="mt-1" *ngIf="app.Status == 'Declined'">
+              <button type="button" disabled class="btn btn-primary btn-sm" style="background:#aaa; border:0;" (click)="declineWorker(app)" title="Decline"><i
+                  class="mdi mdi-cancel"></i> Declined</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="alert alert-info" role="alert" *ngIf="jobdetail.AppliedWorkers.length == 0">
+        This job has no applicants.
+      </div>
+    </div>
+  </div>
+</div>

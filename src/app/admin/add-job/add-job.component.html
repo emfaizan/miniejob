@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-lg-6 mt-4">
+    <div class="card-box">
+      <h4 class="mb-4 header-title">Add a Job</h4>
+
+      <form #addJobForm="ngForm" (submit)="onSubmit()">
+        <h6>Job Title</h6>
+        <input type="text" class="form-control" name="jobtitle" [(ngModel)]="model.jobtitle"/>
+
+        <div class="row mt-3">
+          <div class="col-6">
+              <h6>Start Time</h6>
+              <input type="datetime-local" class="form-control" name="starttime" [(ngModel)]="model.startTime"/>
+          </div>
+          <div class="col-6">
+              <h6>End Time</h6>
+              <input type="datetime-local" class="form-control" name="endtime" [(ngModel)]="model.endTime"/>
+          </div>
+        </div>
+
+        <h6 class="mt-3">JobType</h6>
+        <select class="form-control" name="jobtype"  [(ngModel)]="model.jobtype">
+          <option value="0">Select Jobtype</option>
+          <option value="1">Full Time</option>
+          <option value="2">Part Time</option>
+        </select>
+
+        <h6 class="mt-3">Position</h6>
+        <select class="form-control" name="position" [(ngModel)]="model.position">
+          <option value="0">Select Position</option>
+          <option value="{{pos.Id}}" *ngFor="let pos of positions; let i = index">{{pos.title}}</option>
+        </select>
+
+        <h6 class="mt-3">Job Description</h6>
+        <textarea class="form-control" name="description" [(ngModel)]="model.description"> </textarea>
+
+        <h6 class="mt-3">Salary</h6>
+        <input type="number" class="form-control" name="salary" [(ngModel)]="model.salary"/>
+
+        <h6 class="mt-3">City</h6>
+        <input type="text" class="form-control" name="city" [(ngModel)]="model.city" readonly/>
+
+        <br>
+        <button class="btn btn-success">Save Job</button>
+      </form>
+    </div>
+  </div>
+</div>

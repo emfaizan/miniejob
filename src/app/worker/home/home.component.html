@@ -1,0 +1,23 @@
+<div class="job-list mt-3" style="max-width: 1000px;margin: auto;">
+  <ng-container *ngFor="let job of jobs; let i = index">
+    <div class="job card-box" *ngIf="!job.HasApplied">
+      <div class="row">
+        <div class="left col-md-9">
+          <h3>{{job.Title}}</h3>
+          <p>{{job.Description}}</p>
+        </div>
+
+        <div class="right col-md-3 text-center">
+          <div class="rate mb-2">
+            <h3 class="text-danger mb-0 mt-0">Rs. {{job.Salary}}</h3>
+            <small style="display:block;">Per Hour</small>
+          </div>
+          <div class="actions">
+            <button class="btn btn-danger btn-rounded width-md waves-effect waves-light btn-sm"
+              (click)="applyJob(job)">Apply</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>

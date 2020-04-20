@@ -1,0 +1,121 @@
+<a [routerLink]="['/admin/i/add-job/0']" class="add-new-job" title="Add Job"><i class="remixicon-add-line"></i></a>
+
+<!-- start page title -->
+<div class="row">
+  <div class="col-12">
+    <div class="page-title-box">
+      <div class="page-title-right">
+        <ol class="breadcrumb m-0">
+          <li class="breadcrumb-item"><a href="javascript: void(0);">MinieJob</a></li>
+          <li class="breadcrumb-item active">Dashboard</li>
+        </ol>
+      </div>
+      <h4 class="page-title">Jobs Board <small><a href="Javascript:void(0)" (click)="getJobs()"><i class="remixicon-refresh-line"></i>Refresh</a></small></h4>
+    </div>
+  </div>
+</div>
+<!-- end page title -->
+
+
+
+<div class="row">
+  <div class="col-lg-4">
+    <div class="card-box">
+      <h4 class="header-title mb-3">Upcoming</h4>
+
+      <div class="no-results" style="text-align:center; margin:20px 0 0" *ngIf="jobs.length == 0">
+        <img src="../../../assets/images/no-results.png" alt="" height="40"/>
+        <span style="display:block;">NO UPCOMING JOBS</span>
+      </div>
+      <ul class="sortable-list tasklist list-unstyled ui-sortable" id="upcoming">
+        <ng-container *ngFor="let job of jobs; let i = index">
+          <li id="task1" class="task-low" *ngIf="job.JobStatus == '10'">
+            <h5 class="mt-0"><a routerLink="/admin/i/job/{{job.Id}}" class="text-dark">{{job.Title}}</a></h5>
+
+            <p>{{job.Description}}</p>
+            <div class="clearfix"></div>
+            <div class="row">
+              <div class="col">
+                <div class="text-right">
+                  <p class="font-13 mt-2 mb-0"><i class="mdi mdi-calendar"></i> {{ (job.StartTime !== null) ? (job.StartTime | date) : "" }} {{ (job.StartTime !== null) ? (job.StartTime | date:'shortTime') : "" }} - {{ (job.EndTime !== null) ? (job.EndTime | date:'shortTime') : "" }}</p>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ng-container>
+      </ul>
+      <a [routerLink]="['/admin/i/add-job/0']" class="btn btn-primary btn-block mt-3 waves-effect waves-light"><i
+          class="mdi mdi-plus-circle"></i> Add New</a>
+    </div>
+  </div> <!-- end col -->
+
+  <div class="col-lg-4">
+    <div class="card-box">
+      <h4 class="header-title mb-3">In Progress</h4>
+
+      <!-- <div class="no-results" style="text-align:center;">
+        <img src="../../../assets/images/no-results.png" alt="" height="40"/>
+        <span style="display:block;">NO JOBS IN PROGRESS</span>
+      </div> -->
+      <ul class="sortable-list tasklist list-unstyled ui-sortable" id="inprogress">
+        <ng-container *ngFor="let job of jobs; let i = index">
+          <li id="task1" class="task-medium" *ngIf="job.JobStatus == '20'">
+            <h5 class="mt-0"><a routerLink="/admin/i/job/{{job.Id}}" class="text-dark">{{job.Title}}</a></h5>
+
+            <p>{{job.Description}}</p>
+            <div class="clearfix"></div>
+            <div class="row">
+              <div class="col-auto">
+                <a routerLink="/admin/i/worker/2" class="text-muted">
+                  <img src="assets/images/users/avatar-1.jpg" alt="task-user"
+                    class="avatar-sm img-thumbnail rounded-circle">
+                </a>
+              </div>
+              <div class="col">
+                <div class="text-right">
+                  <p class="font-13 mt-2 mb-0"><i class="mdi mdi-calendar"></i> {{ (job.StartTime !== null) ? (job.StartTime | date) : "" }} {{ (job.StartTime !== null) ? (job.StartTime | date:'shortTime') : "" }} - {{ (job.EndTime !== null) ? (job.EndTime | date:'shortTime') : "" }}</p>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ng-container>
+      </ul>
+    </div> <!-- end card-box -->
+  </div> <!-- end col -->
+
+  <div class="col-lg-4">
+    <div class="card-box">
+      <h4 class="header-title mb-3">Completed</h4>
+
+      <!-- <div class="no-results" style="text-align:center;">
+        <img src="../../../assets/images/no-results.png" alt="" height="40"/>
+        <span style="display:block;">NO JOBS COMPLETED</span>
+      </div> -->
+      <ul class="sortable-list tasklist list-unstyled ui-sortable" id="completed">
+        <ng-container *ngFor="let job of jobs; let i = index">
+          <li id="task1" class="task-high" *ngIf="job.JobStatus == '30'">
+            <h5 class="mt-0"><a routerLink="/admin/i/job/{{job.Id}}" class="text-dark">{{job.Title}}</a></h5>
+
+            <p>{{job.Description}}</p>
+            <div class="clearfix"></div>
+            <div class="row">
+              <div class="col-auto">
+                <a href="javascript: void(0);" class="text-muted">
+                  <img src="assets/images/users/avatar-1.jpg" alt="task-user"
+                    class="avatar-sm img-thumbnail rounded-circle">
+                </a>
+              </div>
+              <div class="col">
+                <div class="text-right">
+                  <p class="font-13 mt-2 mb-0"><i class="mdi mdi-calendar"></i> {{ (job.StartTime !== null) ? (job.StartTime | date) : "" }} {{ (job.StartTime !== null) ? (job.StartTime | date:'shortTime') : "" }} - {{ (job.EndTime !== null) ? (job.EndTime | date:'shortTime') : "" }}</p>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ng-container>
+      </ul>
+    </div> <!-- end card-box -->
+  </div> <!-- end col -->
+
+</div>
+<!-- end row -->

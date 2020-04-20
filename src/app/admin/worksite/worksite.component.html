@@ -1,0 +1,155 @@
+<div class="row">
+  <div class="col-12">
+    <div class="page-title-box">
+      <div class="page-title-right">
+        <ol class="breadcrumb m-0">
+          <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
+          <li class="breadcrumb-item active">Worksite</li>
+        </ol>
+      </div>
+      <h4 class="page-title">Worksite Profile</h4>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-lg-8 col-xl-8">
+    <div class="card-box">
+      <ul class="nav nav-pills navtab-bg">
+        <li class="nav-item">
+          <a href="#about-me" data-toggle="tab" aria-expanded="true" class="nav-link active ml-0">
+            <i class="mdi mdi-face-profile mr-1"></i>About
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#settings" data-toggle="tab" aria-expanded="false" class="nav-link">
+            <i class="mdi mdi-settings-outline mr-1"></i>Settings
+          </a>
+        </li>
+      </ul>
+
+      <div class="tab-content">
+
+        <div class="tab-pane" id="settings">
+
+          <h5 class="mb-3 mt-4 text-uppercase"><i class="mdi mdi-cards-variant mr-1"></i>
+            Jobs Offered</h5>
+          <div class="table-responsive">
+            <table class="table table-borderless mb-0">
+              <thead class="thead-light">
+                <tr>
+                  <th>#</th>
+                  <th>Job Name</th>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Status</th>
+                  <th>Worker</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>App design and development</td>
+                  <td>01/01/2015</td>
+                  <td>10/15/2018</td>
+                  <td><span class="badge badge-info">Work in Progress</span></td>
+                  <td>Halette Boivin</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Coffee detail page - Main Page</td>
+                  <td>21/07/2016</td>
+                  <td>12/05/2018</td>
+                  <td><span class="badge badge-success">Pending</span></td>
+                  <td>Durandana Jolicoeur</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Poster illustation design</td>
+                  <td>18/03/2018</td>
+                  <td>28/09/2018</td>
+                  <td><span class="badge badge-pink">Done</span></td>
+                  <td>Lucas Sabourin</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>Drinking bottle graphics</td>
+                  <td>02/10/2017</td>
+                  <td>07/05/2018</td>
+                  <td><span class="badge badge-purple">Work in Progress</span></td>
+                  <td>Donatien Brunelle</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>Landing page design - Home</td>
+                  <td>17/01/2017</td>
+                  <td>25/05/2021</td>
+                  <td><span class="badge badge-warning">Coming soon</span></td>
+                  <td>Karel Auberjo</td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+        <!-- end timeline content-->
+
+        <div class="tab-pane show active" id="about-me">
+          <form #WorksiteForm="ngForm" (submit)="onSubmit()">           
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="companyname">Worksite Name</label>
+                  <input type="text" class="form-control" id="companyname" name="companyname" [(ngModel)]="model.Name" placeholder="Enter company name">
+                </div>
+              </div>
+          
+            </div> <!-- end row -->
+            
+            
+            <div class="row">
+              <div class="col-12">
+                <div class="form-group">
+                  <label for="worksitebio">Worksite Bio</label>
+                  <textarea class="form-control" id="worksitebio" name="worksitebio" rows="4" [(ngModel)]="model.Description" placeholder="Write something..."></textarea>
+                </div>
+              </div> <!-- end col -->
+            </div> <!-- end row -->
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="phone">Phone</label>
+                  <input type="tel" class="form-control" id="phone" name="phone" [(ngModel)]="model.Phone" placeholder="Enter phone">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="industry">Industry</label>
+                  <select class="form-control" [(ngModel)]="model.Industry" name="industry">
+                    <option value="0">-- Select --</option>
+                    <option value="media">Media</option>
+                    <option value="logistics">Logistics</option>
+                    <option value="food">Food</option>
+                    <option value="it">Information Technology</option>
+                    <option value="construction">Construction</option>
+                  </select>
+                </div>
+              </div> <!-- end col -->
+            </div> <!-- end row -->            
+
+            <div class="text-right">
+              <button type="submit" class="btn btn-success waves-effect waves-light mt-2"><i
+                  class="mdi mdi-content-save"></i> Save</button>
+            </div>
+          </form>
+        </div>
+        <!-- end settings content-->
+
+      </div> <!-- end tab-content -->
+    </div> <!-- end card-box-->
+
+  </div> <!-- end col -->
+</div>
